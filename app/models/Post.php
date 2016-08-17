@@ -8,6 +8,7 @@
 class Post extends \Phalcon\Mvc\Model
 {
     protected $id;
+    protected $title;
     protected $content;
     protected $created_at;
 }
