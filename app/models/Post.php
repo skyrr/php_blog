@@ -16,6 +16,12 @@ class Post extends \Phalcon\Mvc\Model
     protected function beforeValidationOnCreate()
     {
         $this->created_at = date("Y-m-d H:i:s");
+        $this->updated_at = date("Y-m-d H:i:s");
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getTitle()
@@ -31,5 +37,10 @@ class Post extends \Phalcon\Mvc\Model
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 }
