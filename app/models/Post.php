@@ -11,6 +11,7 @@ class Post extends \Phalcon\Mvc\Model
     protected $title;
     protected $content;
     protected $created_at;
+    protected $updated_at;
 
     protected function beforeValidationOnCreate()
     {

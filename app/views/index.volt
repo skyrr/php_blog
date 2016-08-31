@@ -58,7 +58,7 @@
                     <a href="post.html">Простий пост</a>
                 </li>
                 <li>
-                    <a href="{{ url.get("post") }}">Вхід</a>
+                    <a href="{{ url.get("/") }}">Вхід</a>
                 </li>
             </ul>
         </div>

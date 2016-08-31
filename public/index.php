@@ -52,7 +52,7 @@ try {
     // Настраиваем базовый URI так, чтобы все генерируемые URI содержали директорию "tutorial"
     $di->set('url', function () {
         $url = new UrlProvider();
-        $url->setBaseUri('/tutorial/');
+        $url->setBaseUri('/');
         return $url;
     });
 
