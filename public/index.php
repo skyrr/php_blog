@@ -19,6 +19,12 @@ try {
     // Создаем DI
     $di = new FactoryDefault();
 
+    $router = new \Phalcon\Mvc\Router(false);
+    $router->add("/", ["controller" => "post", "action" => "index"]);
+
+    $di->set('router', $router);
+
+
     // Настраиваем сервис для работы с БД
     $di->set('db', function () {
         return new DbAdapter(array(

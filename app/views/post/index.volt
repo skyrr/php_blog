@@ -22,7 +22,7 @@
             {% for post in posts %}
             <hr>
             <div class="post-preview">
-                <a href="">
+                <a href=" ">
                     <h2 class="post-title">{{ post.getTitle() }}</h2>
                     <h3 class="post-subtitle">{{ post.getContent() }}</h3>
                 </a>

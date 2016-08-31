@@ -10,7 +10,7 @@ class PostController extends \Phalcon\Mvc\Controller
     public function indexAction()
     {
         $posts = Post::find();
-        $this->view->setVar("posts", $posts);
+        $this->view->posts = $posts;
 
     }
 
@@ -22,6 +22,7 @@ class PostController extends \Phalcon\Mvc\Controller
     public function createAction()
     {
         if ($this->request->isPost()) {
+
             $data = $this->request->getPost();
             $post = new Post($data);
             $success = $post->create();
