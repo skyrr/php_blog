@@ -5,6 +5,7 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url as UrlProvider;
+use Phalcon\Session\Adapter\Files as Session;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 try {
@@ -24,13 +25,18 @@ try {
 
     $router->add("/user/login", ["controller" => "user", "action" => "login"]);
 
+    $router->add("/user/logout", ["controller" => "user", "action" => "logout"]);
+
     $router->add("/user/signin", ["controller" => "user", "action" => "signin"]);
+
+    $router->add("/post/index", ["controller" => "post", "action" => "index"]);
 
     $router->add("/post/create", ["controller" => "post", "action" => "create"]);
 
     $router->add("/post/{id}/edit", ["controller" => "post", "action" => "edit"]);
 
-    $router->add("/post/{id}/comment", ["controller" => "post", "action" => "comment"]);
+    $router->add("/comment/{id}/comment", ["controller" => "comment", "action" => "comment"]);
+
 
 
     $di->set('router', $router);
@@ -60,7 +66,6 @@ try {
         ));
     });
 
-
     // Настраиваем компонент View
     $di->set('view', function () {
         $view = new View();
@@ -75,12 +80,24 @@ try {
 
     });
 
+    $di->setShared('session', function () {
+        $session = new Session();
+        $session->start();
+        return $session;
+    });
+
     // Настраиваем базовый URI так, чтобы все генерируемые URI содержали директорию "tutorial"
     $di->set('url', function () {
         $url = new UrlProvider();
         $url->setBaseUri('/');
         return $url;
     });
+
+    $di->set('security', function () {
+        $security = new \Phalcon\Security();
+        $security->setWorkFactor(12);
+        return $security;
+    }, true);
 
     // Обрабатываем запрос
     $application = new Application($di);

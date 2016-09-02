@@ -18,11 +18,14 @@
 <!-- Main Content -->
 <div class="container">
     <div class="row">
+        {% if (user) %}
+        Hello {{ user.getName() }} {{ user.getId() }}
+        {% endif %}
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             {% for post in posts %}
             <hr>
             <div class="post-preview">
-                <a href=" ">
+                <a href="{{ url.get("/comment/" ~ post.getId() ~ "/comment") }}">
                     <h2 class="post-title">{{ post.getTitle() }}</h2>
                     <h3 class="post-subtitle">{{ post.getContent() }}</h3>
                 </a>

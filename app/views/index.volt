@@ -52,13 +52,13 @@
                     <a href="index.html">Домашня</a>
                 </li>
                 <li>
-                    <a href="about.html">Про</a>
-                </li>
-                <li>
                     <a href="{{ url.get("/post/create") }}">Новий пост</a>
                 </li>
                 <li>
                     <a href="{{ url.get("/user/login") }}">Вхід</a>
+                </li>
+                <li>
+                    <a href="{{ url.get("/user/logout") }}">Вихід</a>
                 </li>
             </ul>
         </div>

@@ -8,6 +8,7 @@
 class Post extends \Phalcon\Mvc\Model
 {
     protected $id;
+    protected $user_id;
     protected $title;
     protected $content;
     protected $created_at;
@@ -17,6 +18,17 @@ class Post extends \Phalcon\Mvc\Model
     {
         $this->created_at = date("Y-m-d H:i:s");
         $this->updated_at = date("Y-m-d H:i:s");
+    }
+
+    protected function initialize()
+    {
+        $this->hasMany(
+            'id',
+            Comment::class,
+            'post_id'
+        );
+
+        $this->belongsTo('user_id', User::class, 'id');
     }
 
     public function getId()
